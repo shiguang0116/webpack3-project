@@ -1,0 +1,163 @@
+/* 通用footer样式 */
+
+/* 全局提示 */
+.sg-msg {
+    position: fixed;
+    z-index: 2000;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+.sg-msg-con {
+    display: inline-block;
+    padding: 12px 16px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    background: #fff;
+    position: relative;
+}
+.sg-msg-icon{
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.sg-msg-text{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    padding-left: 30px;
+}    
+.sg-msg-success .sg-msg-icon{
+    background-image: url('../../../image/icon/success.png');
+}
+.sg-msg-error .sg-msg-icon{
+    background-image: url('../../../image/icon/error.png');
+}
+.sg-msg-success .sg-msg-text{
+    color: #34B8C2;
+}
+.sg-msg-error .sg-msg-text{
+    color: #F56A01;
+}
+/* 模态框 */
+.sg-modal,.sg-modal-photo{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.5);
+	display: none;
+}
+.sg-modal-con,.sg-modal-photo-con{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 500px;
+	background-color: #fff;
+	border-radius: 6px;
+}
+.sg-modal-head{
+    padding: 16px 30px;
+    height: 70px;
+    border-bottom: 1px solid #e9e9e9;
+    position: relative;
+}
+.sg-modal-title{
+	font-size: 24px;
+	color: #5A5A5A;
+	letter-spacing: 2.4px;
+	height: 36px;
+	line-height: 36px;
+}
+.sg-modal-title i{
+	width: 28px;
+	height: 28px;
+	background: url('../../../image/icon/tip.png') no-repeat center;
+	position: absolute;
+	top: 20px;
+	left: 30px;
+}
+.sg-modal-title span{
+	margin-left: 38px;
+}
+.sg-modal-close{
+	position: absolute;
+	top: 24px;
+	right: 30px;
+	cursor: pointer;
+}
+.sg-modal-close i{
+	width: 20px;
+	height: 20px;
+	background: url('../../../image/icon/close.jpg') no-repeat center;
+}
+.sg-modal-body{
+    padding: 30px;
+    font-size: 16px;
+    color: #5a5a5a;
+    letter-spacing: 1.6px;
+}
+.sg-modal-foot{
+    padding: 12px 30px;
+    height: 70px;
+    border-top: 1px solid #e9e9e9;
+    text-align: right;
+}
+.sg-modal-foot .btn{
+	width: 150px;
+	margin-left: 20px;
+	font-size: 16px;
+	letter-spacing: 4px;
+}
+/* 图片预览 */
+.sg-modal-photo-con{
+    width: auto;
+    min-width: 150px;
+    max-width: 800px;
+}
+.sg-modal-photo-head{
+    padding: 0px 10px;
+    height: 30px;
+    border-bottom: 1px solid #e9e9e9;
+    position: relative;
+}
+.sg-modal-photo-title{
+    font-size: 14px;
+    color: #5A5A5A;
+    letter-spacing: 2.4px;
+    height: 30px;
+    line-height: 30px;
+}
+.sg-modal-photo-close{
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    cursor: pointer;
+}
+.sg-modal-photo-close i{
+    width: 12px;
+    height: 12px;
+    background: url('../../../image/icon/close.jpg') no-repeat center;
+    background-size: cover;
+}
+.sg-modal-photo-body{
+    text-align: center;
+    overflow: hidden;
+}
+.sg-modal-photo-body img{
+    display: none;
+}
+.sg-modal-photo-body .text{
+    text-align: left;
+    padding: 5px 10px;
+    display: none;
+}

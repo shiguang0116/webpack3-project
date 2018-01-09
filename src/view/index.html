@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%= require('html-loader!./layout/head-common.html') %>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+    <%= require('html-loader!./layout/header.html') %>
+    <section>
+        <div class="w">
+            index
+        </div>
+        
+    </section>
+    <%= require('html-loader!./layout/footer.html') %>
+</body>
+</html>
