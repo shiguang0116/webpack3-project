@@ -1,0 +1,16 @@
+.sg-banner-item>div{
+	height: 100%;
+	background-repeat: no-repeat;
+}
+.sg-banner-img1{
+	background: url('../../image/banner/0.jpg');
+	background-size: cover;
+}
+.sg-banner-img2{
+	background: url('../../image/banner/1.jpg');
+	background-size: cover;
+}
+.sg-banner-img3{
+	background: url('../../image/banner/2.jpg');
+	background-size: cover;
+}

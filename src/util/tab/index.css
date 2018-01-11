@@ -1,0 +1,22 @@
+.sg-tab{
+
+}
+.sg-tab-nav{
+	width: 200px;
+	overflow: hidden;
+}
+.sg-tab-nav li{
+	float: left;
+	width: 50%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+.sg-tab-nav li.active{
+	color: #fff;
+	background-color: purple;
+}
+.sg-tab-item{
+	display: none;
+}

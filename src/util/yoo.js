@@ -64,7 +64,7 @@ var _yoo = {
         $("#sg-msg").animate({top: "50px",opacity: "1"}, 300).delay(time).fadeOut(300);
     },
     // 模态框
-    modal : function(param){
+    Modal : function(param){
         var title       = param.title || '确定',
             content     = param.content || '确定执行此操作吗？',
             cancelText  = param.cancelText || '取消',
@@ -98,7 +98,7 @@ var _yoo = {
             event.stopPropagation();
         })
     },
-    modalPhoto: function(param){
+    ModalPhoto: function(param){
         var title   = param.title || '图片';
         if (param.url) {
             $("#sg-modal-photo-body img").attr("src",param.url).css("display","inline-block");

@@ -9,9 +9,47 @@
     <%= require('html-loader!./layout/header.html') %>
     <section>
         <div class="w">
-            index
+        	<h2>Tab</h2>
+            <div id="sg-tab1" class="sg-tab">
+            	<ul class="sg-tab-nav">
+            		<li class="active">买家</li>
+            		<li>卖家</li>
+            	</ul>
+            	<div class="sg-tab-con">
+            		<div class="sg-tab-item" style="display: block;">买家内容111111</div>
+            		<div class="sg-tab-item">卖家内容222222</div>
+            	</div>
+            </div>
+        	<h2>slider</h2>
+            <div id="banner1">
+                <div class="sg-banner">
+                    <!-- 放图片的盒子 -->
+                    <div class="sg-banner-con">
+                        <div class="sg-banner-item">
+                            <div class="sg-banner-img1"></div>
+                        </div>
+                        <div class="sg-banner-item">
+                            <div class="sg-banner-img2"></div>
+                        </div>
+                        <div class="sg-banner-item">
+                            <div class="sg-banner-img3"></div>
+                        </div>
+                    </div>
+                    <!-- 放小圆点的盒子 -->
+                    <ul class="sg-banner-dots">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <!-- 放按钮的盒子 -->
+                    <div class="sg-banner-btn">
+                        <div class="sg-banner-left"></div>
+                        <div class="sg-banner-right"></div>
+                    </div>
+                        
+                </div>
+            </div>
         </div>
-        
     </section>
     <%= require('html-loader!./layout/footer.html') %>
 </body>

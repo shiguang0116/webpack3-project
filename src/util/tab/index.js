@@ -2,41 +2,45 @@
 require('./index.css');
 //选项卡
 var oParent = null;
-var aInp = null;
-var aLi = null;
+var aLi 	= null;
+var aItem 	= null;
 var Tab = function(id){
 	this.oParent 	= document.getElementById(id);
-	this.aInp 		= this.oParent.getElementsByTagName('input');
-	this.aLi	 	= this.oParent.getElementsByTagName('li');
+	this.aLi 		= document.querySelectorAll('#' + id + ' .sg-tab-nav>li');
+	this.aItem	 	= document.querySelectorAll('#' + id + ' .sg-tab-item');
 	this.index 		= 0;
+	// html5新加标签（ie8+）
+    // document.querySelector(); //  返回单个node，如果有多个匹配元素就返回第一个
+    // document.querySelectorAll(); // 返回一个nodeList集合
 }
 Tab.prototype.init = function (){
 	var This = this;
-	for (var i = this.aInp.length-1;i>=0;i--){
-		this.aInp[i].index = i;
-		this.aInp[i].onclick = function(){
+	for (var i = this.aLi.length-1;i>=0;i--){
+		this.aLi[i].index = i;
+		this.aLi[i].onclick = function(){
 			This.change(this);
 		};
 	};
 };
 Tab.prototype.change = function(obj) {
-	for (var i = this.aInp.length - 1; i >= 0; i--) {
-		this.aInp[i].className = "";
-		this.aLi[i].style.display = "none";
+	for (var i = this.aLi.length - 1; i >= 0; i--) {
+		this.aLi[i].className = "";
+		this.aItem[i].style.display = "none";
 	};
 	obj.className = "active";
-	this.aLi[obj.index].style.display = "block";	
+	this.aItem[obj.index].style.display = "block";	
 };
-Tab.prototype.autoplay = function(){
+Tab.prototype.autoplay = function(time){
+	var time = time || 3000;
 	var This = this;
 	setInterval(function(){
 		This.index ++;
-		if(This.index == This.aInp.length){
+		if(This.index == This.aLi.length){
 			This.index = 0;
 		}
-		This.aInp[This.index].index = This.index;
-		This.change(This.aInp[This.index]);
-	},1000);
+		This.aLi[This.index].index = This.index;
+		This.change(This.aLi[This.index]);
+	},time);
 };
 
 module.exports = Tab;
