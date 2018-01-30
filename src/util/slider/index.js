@@ -2,7 +2,7 @@
 
 require('./index.css');
 // 轮播图
-var Slider = function(id){
+var Carousel = function(id){
 	this.$imgs 		= $("#" + id + " .sg-banner-item")
 	this.$dotsBox 	= $("#" + id + " .sg-banner-dots")
 	this.$dots 		= $("#" + id + " .sg-banner-dots li")
@@ -21,7 +21,7 @@ var Slider = function(id){
 	this.T 			= 0
 	this.H 			= this.$imgs[0].offsetHeight
 }
-Slider.prototype.init = function(param){
+Carousel.prototype.init = function(param){
 	// 初始化选项
 	var delay 			= param.delay || 3000,
 		isVertical 		= param.isVertical || false,
@@ -53,7 +53,7 @@ Slider.prototype.init = function(param){
 	// 左右按钮事件
 	this.btnEvent(hideBtn, type, isVertical)
 }
-Slider.prototype.autoplay = function(delay, type, isVertical){
+Carousel.prototype.autoplay = function(delay, type, isVertical){
 	var _this = this;
 	this.time = setInterval(function(){
 		_this.index++;
@@ -63,7 +63,7 @@ Slider.prototype.autoplay = function(delay, type, isVertical){
 		_this.change(_this.index, type, isVertical);
 	}, delay);
 }
-Slider.prototype.change = function(i, type, isVertical){
+Carousel.prototype.change = function(i, type, isVertical){
 	// 横向轮播
 	if (!isVertical) {
 		this.across(i, type)
@@ -73,7 +73,7 @@ Slider.prototype.change = function(i, type, isVertical){
 		this.vertical(i, type)
 	}
 }
-Slider.prototype.across = function(i, type){
+Carousel.prototype.across = function(i, type){
 	var _this = this;
 	if (!type) {
 		this.changeDots(i);
@@ -102,7 +102,7 @@ Slider.prototype.across = function(i, type){
 		});
 	}
 }
-Slider.prototype.vertical = function(i, type){
+Carousel.prototype.vertical = function(i, type){
 	var _this = this;
 	// 改变dots
 	var j = i;
@@ -119,10 +119,10 @@ Slider.prototype.vertical = function(i, type){
 		}
 	});
 }
-Slider.prototype.changeDots = function(i){
+Carousel.prototype.changeDots = function(i){
 	this.$dots.eq(i).addClass("active").siblings().removeClass("active");
 }
-Slider.prototype.bannerEvent = function(continuePlay, delay, type, isVertical){
+Carousel.prototype.bannerEvent = function(continuePlay, delay, type, isVertical){
 	var _this = this;
 	// 继续轮播
 	if (continuePlay) {
@@ -139,7 +139,7 @@ Slider.prototype.bannerEvent = function(continuePlay, delay, type, isVertical){
 		);
 	}
 }
-Slider.prototype.dotsEvent = function(hideDots, type, isVertical){
+Carousel.prototype.dotsEvent = function(hideDots, type, isVertical){
 	var _this = this;
 	// 隐藏dots
 	if (hideDots) {
@@ -153,7 +153,7 @@ Slider.prototype.dotsEvent = function(hideDots, type, isVertical){
 		});
 	}
 }
-Slider.prototype.btnEvent = function(hideBtn, type, isVertical){
+Carousel.prototype.btnEvent = function(hideBtn, type, isVertical){
 	var _this = this;
 	// 隐藏btn
 	if (hideBtn) {
@@ -176,4 +176,4 @@ Slider.prototype.btnEvent = function(hideBtn, type, isVertical){
 	}
 }
 
-module.exports = Slider;
+module.exports = Carousel;

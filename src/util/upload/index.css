@@ -6,7 +6,8 @@
 	float: left;
 }
 .sg-file-img img{
-	 margin-right: 15px;
+	margin-right: 15px;
+	display: none;
 }
 .sg-file-btn{
 	display: block;

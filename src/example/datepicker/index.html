@@ -1,0 +1,27 @@
+<h2>datepicker</h2>
+<div style="width: 300px;">
+	<!-- 相关属性 -->
+	<input class="inp" type="text" data-beatpicker="true" 
+			data-beatpicker-module="footer,clear"/>
+	<!-- 自定义 -->
+	<input class="inp" type="text" data-beatpicker="true" 
+			data-beatpicker-extra="customOptions" 
+			data-beatpicker-disable="{from:[2018,1,15],to:'<'}"
+			data-beatpicker-module="footer,clear"/>
+</div>
+<script>
+	customOptions = {
+		daysSimple: ["Su" , "Mo" , "Tu" , "We" , "Th" , "Fr" , "Sa"],
+		monthsSimple: ["Jan" , "Feb" , "Mar" , "Apr"  , "May" , "Jun" , "Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"],
+    	monthsFull: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+	    view : {
+	        // alwaysVisible:true
+	    },
+	    labels: {
+	        today: "Today",
+	        gotoDateInput: "Insert your date",
+	        gotoDateButton: "Set",
+	        clearButton: "英文"
+	    }
+	}
+</script>

@@ -1,0 +1,5 @@
+<ul>
+{{#data}}
+	<li class="sg-select-item" data-value={{key}}>{{value}}</li>
+{{/data}}
+</ul>

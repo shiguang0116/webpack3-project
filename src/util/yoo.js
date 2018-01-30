@@ -49,6 +49,29 @@ var _yoo = {
             result      = template.render(data);
         return result;
     },
+     // 字段的验证，支持非空、手机、邮箱的判断
+    validate : function(value, type){
+        var value = $.trim(value);
+        // 非空验证
+        if('require' === type){
+            return !!value;
+        }
+        // 手机号验证
+        if('phone' === type){
+            return /^1\d{10}$/.test(value);
+        }
+        // 邮箱格式验证
+        if('email' === type){
+            return /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(value);
+        }
+    },
+    // 统一登录处理
+    doLogin : function(){
+        window.location.href = '/assets/index/user-login.html?redirect=' + encodeURIComponent(window.location.href);
+    },
+    goHome : function(){
+        window.location.href = '/assets/index/index.html';
+    },
     // 成功提示
     sucTip : function(msg, time){
         var msg     = msg || '操作成功！',
@@ -64,7 +87,7 @@ var _yoo = {
         $("#sg-msg").animate({top: "50px",opacity: "1"}, 300).delay(time).fadeOut(300);
     },
     // 模态框
-    Modal : function(param){
+    modal : function(param){
         var title       = param.title || '确定',
             content     = param.content || '确定执行此操作吗？',
             cancelText  = param.cancelText || '取消',
@@ -98,7 +121,7 @@ var _yoo = {
             event.stopPropagation();
         })
     },
-    ModalPhoto: function(param){
+    modalPhoto: function(param){
         var title   = param.title || '图片';
         if (param.url) {
             $("#sg-modal-photo-body img").attr("src",param.url).css("display","inline-block");
@@ -118,29 +141,6 @@ var _yoo = {
         $("#sg-modal-photo-con").click(function(event){
             event.stopPropagation();
         })
-    },
-    // 字段的验证，支持非空、手机、邮箱的判断
-    validate : function(value, type){
-        var value = $.trim(value);
-        // 非空验证
-        if('require' === type){
-            return !!value;
-        }
-        // 手机号验证
-        if('phone' === type){
-            return /^1\d{10}$/.test(value);
-        }
-        // 邮箱格式验证
-        if('email' === type){
-            return /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(value);
-        }
-    },
-    // 统一登录处理
-    doLogin : function(){
-        window.location.href = '/assets/index/user-login.html?redirect=' + encodeURIComponent(window.location.href);
-    },
-    goHome : function(){
-        window.location.href = '/assets/index/index.html';
     },
     //设置cookie
     setCookie: function(c_name,c_pwd,exdays) {
@@ -183,8 +183,24 @@ var _yoo = {
         oInp.select(); // 选中文本
         document.execCommand("copy"); // 执行浏览器复制命令
     },
-    // 搜索关键字
-    filterList: function (obj) {
+    // 格式化数据
+    getList : function(obj){
+        var list = [],
+            obj  = obj || [];
+        for (var i=0; i<obj.length; i++) {
+            list.push({
+                key: Object.keys(obj[i])[0],
+                value: Object.values(obj[i])[0]
+            })
+        }
+        return list
+    },
+    // 数据过滤
+    filterList : function(obj){
+        return obj
+    },
+    // 条件刷选
+    filterSelected : function (obj) {
         var selectData = obj.selectData;
         if (obj.productList) {
             var product = obj.productList;
@@ -214,6 +230,17 @@ var _yoo = {
         return product;
     },
     // 排序
+
+    // 事件监听
+    addEvent : function (obj, event, fn, type){
+        var type = type || false
+        if(obj.attachEvent){
+            obj.attachEvent("on"+event,fn,type)
+        }else{
+            obj.addEventListener(event,fn,type)
+        }
+    },
+    
 };
 
 module.exports = _yoo;

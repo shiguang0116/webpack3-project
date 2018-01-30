@@ -5,10 +5,11 @@ var _yoo = require('util/yoo.js');
 // 文件上传
 var Upload = function(id){
 	// 文件上传
-    this.$fileImg 	= $('#' + id + ' .sg-file-img img');
-    this.$fileInfo 	= $('#' + id + ' .sg-file-info');
-    this.$fileInp 	= $('#' + id + ' .sg-file-inp');
-    this.data 		= '';
+    this.$fileImgBox 	= $('#' + id + ' .sg-file-img');
+    this.$fileImg 		= $('#' + id + ' .sg-file-img img');
+    this.$fileInfo 		= $('#' + id + ' .sg-file-info');
+    this.$fileInp 		= $('#' + id + ' .sg-file-inp');
+    this.data 			= '';
 }
 Upload.prototype.init = function (param){
 	// 初始化选项
@@ -50,7 +51,7 @@ Upload.prototype.bindEvent = function(size, showInfo, success){
         var reader = new FileReader();
         reader.onload = function(e){
             _this.data = e.target.result;
-            _this.$fileImg.attr("src", _this.data);
+            _this.$fileImg.attr("src", _this.data).css("display","block");
 	        // 回调函数
 	        typeof success === 'function' && success(_this.data.split('base64,')[1]);
         }

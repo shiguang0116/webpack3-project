@@ -1,0 +1,79 @@
+.sg-select {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    color: #495060;
+    font-size: 14px;
+    cursor: pointer;
+}
+.sg-select-inp {
+    position: relative;
+    height: 44px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #dddee1;
+    transition: all .2s ease-in-out;
+}
+.sg-select-inp:hover {
+    border-color: #34B8C2;
+}
+.sg-select-inp:active{
+    border: 1px solid #34B8C2;
+    box-shadow: 0 0 4px 0 rgba(52,184,194,0.60);
+}
+.sg-select-placeholder, .sg-select-selected {
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.sg-select-placeholder {
+    color: #bbbec4;
+}
+.sg-select-selected{
+    display: none;
+}
+/* 箭头 */
+.sg-select-arrow-down,
+.sg-select-arrow-up {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    line-height: 1;
+    margin-top: -7px;
+    font-size: 14px;
+    color: #80848f;
+    transition: all .2s ease-in-out;
+}
+.sg-select-arrow-up {
+    display: none;
+}
+    
+/* 下拉框 */
+.sg-select-dropdown {
+    max-height: 200px;
+    overflow: auto;
+    margin: 5px 0;
+    padding: 5px 0;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    display: none;
+    position: absolute;
+    z-index: 900;
+}
+.sg-select-item {
+    padding: 7px 16px;
+    clear: both;
+    color: #495060;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: background .2s ease-in-out;
+}
+.sg-select-item:hover {
+    background: #e9e9e9;
+}

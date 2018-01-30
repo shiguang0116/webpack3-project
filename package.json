@@ -37,6 +37,7 @@
     "webpack-dev-server": "^1.16.5"
   },
   "dependencies": {
+    "echarts": "^4.0.2",
     "font-awesome": "^4.7.0",
     "hogan": "^1.0.2"
   }

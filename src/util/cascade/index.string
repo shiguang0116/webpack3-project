@@ -1,0 +1,38 @@
+<ul class="sg-cascade-menu">
+	{{#data0}}
+	{{#isActive}}
+    <li class="sg-cascade-item sg-cascade-item-active" data-value="{{value}}">
+	{{/isActive}}
+	{{^isActive}}
+	<li class="sg-cascade-item" data-value="{{value}}">
+	{{/isActive}}
+        <span>{{name}}</span>
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </li>
+	{{/data0}}
+</ul>
+<ul class="sg-cascade-menu">
+	{{#data1}}
+    {{#isActive}}
+    <li class="sg-cascade-item sg-cascade-item-active" data-value="{{value}}">
+	{{/isActive}}
+	{{^isActive}}
+	<li class="sg-cascade-item" data-value="{{value}}">
+	{{/isActive}}
+        <span>{{name}}</span>
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </li>
+	{{/data1}}
+</ul>
+<ul class="sg-cascade-menu">
+	{{#data2}}
+    {{#isActive}}
+    <li class="sg-cascade-item sg-cascade-item-active" data-value="{{value}}">
+	{{/isActive}}
+	{{^isActive}}
+	<li class="sg-cascade-item" data-value="{{value}}">
+	{{/isActive}}
+        <span>{{name}}</span>
+    </li>
+	{{/data2}}
+</ul>

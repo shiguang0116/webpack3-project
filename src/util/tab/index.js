@@ -1,9 +1,7 @@
 'use strict';
 require('./index.css');
-//选项卡
-var oParent = null;
-var aLi 	= null;
-var aItem 	= null;
+
+// 选项卡
 var Tab = function(id){
 	this.oParent 	= document.getElementById(id);
 	this.aLi 		= document.querySelectorAll('#' + id + ' .sg-tab-nav>li');

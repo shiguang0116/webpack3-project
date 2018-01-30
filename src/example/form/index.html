@@ -1,0 +1,65 @@
+<div id="app">
+	<h2>button</h2>
+	<button class="btn">btn</button>
+	<button class="btn btn-hu">btn-hu</button>
+	<button class="btn btn-jv">btn-jv</button>
+	<button class="btn btn-bd">btn-bd</button>
+	<button class="btn btn-hu-bd">btn-hu-bd</button>
+	<button class="btn btn-jv-bd">btn-jv-bd</button>
+	<h2>input</h2>
+	<div style="width: 300px;">
+		<input type="text" autocomplete="off" class="inp" placeholder="请输入">
+	</div>
+	<h2>radio</h2>
+	<div class="sg-radio" id="radio1">
+		<label class="sg-radio-item sg-radio-checked" data-value="red">
+			<span class="sg-radio-inp"></span>红色
+        </label>
+	    <label class="sg-radio-item" data-value="blue">
+    		<span class="sg-radio-inp"></span>蓝色
+        </label>
+        <label class="sg-radio-item" data-value="purple">
+    		<span class="sg-radio-inp"></span>紫色
+        </label>
+	</div>
+	<h2>checkbox</h2>
+	<div class="sg-checkbox" id="checkbox1">
+	    <label class="sg-checkbox-item sg-checkbox-checked" data-value="banner">
+    		<span class="sg-checkbox-inp"></span>
+	        <span>香蕉</span>
+	    </label>
+	    <label class="sg-checkbox-item" data-value="apple">
+	    	<span class="sg-checkbox-inp"></span>
+	        <span>苹果</span>
+	    </label>
+	</div>
+	
+	<div>
+		<button class="btn btn-jv" id="submit">提交</button>
+	</div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cityList: [
+                    {
+                        value: 'New York',
+                        label: '纽约'
+                    },
+                    {
+                        value: 'London',
+                        label: '伦敦'
+                    },
+                    {
+                        value: 'Paris',
+                        label: '巴黎'
+                    }
+                ],
+                model1: ''
+        },
+        methods: {
+            
+        }
+    })
+  </script>
