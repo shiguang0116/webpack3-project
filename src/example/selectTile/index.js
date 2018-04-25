@@ -1,5 +1,5 @@
-var SelectTile 	= require('util/selectTile/index.js');
-var _yoo 		= require('util/yoo.js');
+var SelectTile 	= require('components/selectTile/index.js');
+var util 		= require('utils/util.js');
 
 // 选择列表
 var component = {
@@ -35,19 +35,19 @@ var component = {
         return [
 			{
 				title: "油品来源",
-				list: _yoo.getList(data.OilFrom)
+				list: util.getList(data.OilFrom)
 			},
 			{
 				title: "油品种类",
-				list: _yoo.getList(data.OilType)
+				list: util.getList(data.OilType)
 			},
 			{
 				title: "油品标号",
-				list: _yoo.getList(this.filterCodeList(data, dataKey))
+				list: util.getList(this.filterCodeList(data, dataKey))
 			},
 			{
 				title: "油品级别",
-				list: _yoo.getList(this.filterLevelList(data, dataKey))
+				list: util.getList(this.filterLevelList(data, dataKey))
 			}
 		];
     },

@@ -1,0 +1,34 @@
+.sg-cell{
+	width: 100%;
+	height: 0.44rem;
+	line-height: 0.44rem;
+	color: #666;
+	font-size: 0.14rem;
+	padding-left: 0.1rem;
+	padding-right: 0.1rem;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+}
+.sg-cell .sg-cell-left{
+	float: left;
+}
+.sg-cell .sg-cell-left .sg-cell-icon{
+	width: 0.2rem;
+	text-align: center;
+	color: #999;
+	margin-right: 0.02rem;
+}
+.sg-cell .sg-cell-right{
+	float: right;
+}
+.sg-cell .sg-cell-right .sg-cell-icon{
+	color: #999;
+}
+.sg-cell .sg-cell-right .sg-cell-text{
+	color: #999;
+	margin-right: 0.06rem;
+}
+
+.noborder{
+	border-width: 0px;
+}

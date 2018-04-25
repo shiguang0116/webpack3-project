@@ -16,19 +16,9 @@
 
 6.启动项目
     开发模式: npm run dev (mac系统上为npm run dev_mac)
-    生产模式: npm run dist (mac系统上为npm run dist_mac)
+    生产模式: npm run build (mac系统上为npm run build_mac)
 
 7.开发模式下预览项目
     访问：http://localhost:8080/assets/index/index.html
-
-8.及时油项目上线注意事项
-
-    footer.html  
-    head-common.html  --->  引入本地文件.css  .js  
-
-    /assets/default/
-    /assets/index/
-
-    js css font favicon文件资源
 
 

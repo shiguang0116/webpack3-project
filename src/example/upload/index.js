@@ -1,4 +1,4 @@
-var Upload = require('util/upload/index.js')
+var Upload = require('components/upload/index.js')
 
 var upload1 = new Upload('file1')
 var data = ''

@@ -1,5 +1,5 @@
-var Radio 		= require('util/radio/index.js')
-var Checkbox 	= require('util/Checkbox/index.js')
+var Radio 		= require('components/radio/index.js')
+var Checkbox 	= require('components/Checkbox/index.js')
 
 var color 	= new Radio('radio1')
 var fruits = new Checkbox('checkbox1')

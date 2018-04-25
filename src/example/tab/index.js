@@ -1,4 +1,4 @@
-var Tab     = require('util/tab/index.js');
+var Tab     = require('components/tab/index.js');
 // 初始化组件
 var tab1 = new Tab('sg-tab1')
 tab1.init()
