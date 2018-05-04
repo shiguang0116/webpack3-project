@@ -10,12 +10,7 @@ var page = {
         this.bindEvent();
     },
     onLoad : function(){
-        util.ajax({
-            url: '/passport/checklogin',
-        })
-        util.ajax({
-            url: '/product/getproductlistall',
-        })
+        
     },
     bindEvent : function(){
         var _this = this;

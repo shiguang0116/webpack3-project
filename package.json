@@ -1,12 +1,12 @@
 {
-  "name": "jquery-web",
+  "name": "jquery-pc",
   "version": "1.0.0",
   "description": "jquery-webpack项目搭建",
   "main": "index.js",
   "scripts": {
-    "dev": "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8080 --open",
+    "dev": "set WEBPACK_ENV=dev && webpack-dev-server --inline",
     "build": "set WEBPACK_ENV=online && webpack -p",
-    "dev_mac": "WEBPACK_ENV=dev webpack-dev-server --inline --port 8080 --open",
+    "dev_mac": "WEBPACK_ENV=dev webpack-dev-server --inline",
     "build_mac": "WEBPACK_ENV=online webpack -p",
     "stop": "taskkill /f /t /im node.exe"
   },

@@ -6,30 +6,14 @@ var util     = require('utils/util.js');
 // 通用页面尾部
 var footer = {
     init : function(){
-        // util.modalPhoto({text: '为电话费'})
-        this.scroll();
+        this.handleFooter();
     },
-    scroll : function(){
-        // document.getElementById('footer').style.display = 'block';
-        var scroll = document.getElementById('scroll').offsetTop-64
-        var footer = document.getElementById('footer').offsetTop
-        if (scroll > footer){
-            document.getElementById('footer').style.position = 'fixed';
-            document.getElementById('footer').style.bottom = '0';
-        }
+    handleFooter : function(){
+        var oFoot = document.getElementById('footer')
+        var oBody = document.getElementsByTagName('body')[0]
+        util.handleFooter(oBody,oFoot,64)
     }
 };
-
-// new Vue({
-//     el: '#buyer',
-//     created: function(){
-//         this.$Message.config({
-//             top: 50,
-//             duration: 3000
-//         });
-//         // this.$Message.success("sdjfgshdg")
-//     }
-// })
 
 $(function(){
     footer.init();

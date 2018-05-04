@@ -1,27 +1,30 @@
 'use strict';
 
-var Hogan = require('hogan.js');
-var conf = {
-    serverHost : ''
-};
+var Hogan       = require('hogan.js');
+
+var env         = process.env.WEBPACK_ENV;
+// var env         = 'dev';
+console.log(env)
+var baseurl     = env == 'dev' ? '/api' : '';
 
 var util = {
     // 网络请求
-    request : function(param){
+    ajax : function(param){
         var _this = this;
         $.ajax({
-            type        : param.method  || 'POST',
-            url         : param.url     || '',
-            dataType    : param.type    || 'json',
-            data        : param.data    || '',
+            type        : param.method || 'POST',
+            url         : baseurl + param.url || '',
+            data        : param.data || '',
+            dataType    : param.type || 'json',
             success     : function(res){
+                var res = res
                 // 请求数据成功
                 if(res.ReturnCode === 'success'){
-                    typeof param.success === 'function' && param.success(res.ReturnData, res.ReturnMessage);
+                    typeof param.success === 'function' && param.success(res.ReturnData);
                 }
                 // 请求数据错误
                 else if(res.ReturnCode === 'error'){
-                    typeof param.error === 'function' && param.error(res.ReturnMessage);
+                    util.errTip(res.ReturnMessage)
                 }
                 // 没有登录状态，需要强制登录
                 else if(res.status === 10){
@@ -29,7 +32,7 @@ var util = {
                 }
             },
             error       : function(err){
-                typeof param.error === 'function' && param.error(err.statusText);
+                util.errTip(err.statusText)
             }
         });
     },
@@ -67,10 +70,10 @@ var util = {
     },
     // 统一登录处理
     doLogin : function(){
-        window.location.href = '/assets/index/user-login.html?redirect=' + encodeURIComponent(window.location.href);
+        window.location.href = '/index/user-login.html?redirect=' + encodeURIComponent(window.location.href);
     },
     goHome : function(){
-        window.location.href = '/assets/index/index.html';
+        window.location.href = '/index/index.html';
     },
     // 成功提示
     sucTip : function(msg, time){
@@ -242,5 +245,17 @@ var util = {
     },
     
 };
+
+// 处理页脚
+util.handleFooter = function(obj1,obj2,pd,h) { // obj: DOM对象  h: number
+    var h = h || 0;
+    var sh = document.documentElement.clientHeight; //页面对象高度（即BODY对象高度加上Margin高）
+    obj1.style.minHeight = (sh - h) + 'px'; 
+    obj1.style.position = 'relative'; 
+    obj1.style.paddingBottom = pd + 'px'; 
+    obj2.style.position = 'absolute'; 
+    obj2.style.bottom = '0'; 
+    obj2.style.display = 'block'; 
+}
 
 module.exports = util;

@@ -2,12 +2,12 @@ var webpack             = require('webpack');
 var path                = require('path');
 var ExtractTextPlugin   = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin   = require('html-webpack-plugin');
-var util                = require('./webpack.util.js');
+
+var config              = require('./index.js');
+var util                = require('./util.js');
 
 // 环境变量配置，dev / online
 var env                 = process.env.WEBPACK_ENV || 'dev';
-
-console.log(process.env.WEBPACK_ENV)
 
 // 配置
 var config = {
@@ -15,23 +15,13 @@ var config = {
         {'main' : ['./src/main.js']}
     ),
     output: {
-        path        : path.resolve(__dirname, './dist/'),   //存放打包后文件的输出目录 
+        path        : config.dev.assetsRoot,                //存放打包后文件的输出目录 
         filename    : util.assetsPath('js/[name].js'),
-        publicPath  : '/',                                  //指定资源文件引用的目录 
+        publicPath  : config.dev.assetsPublicPath,          //指定资源文件引用的目录 
     },
     devServer: {
-        contentBase: "./dist", //本地服务器所加载的页面所在的目录
-        inline: true,
-        host: 'localhost',
-        port: 8080,
-        open: true,
-        openPage: '/index/index.html',
-        proxy: {
-            "/api": {
-                target: "http://192.168.31.234",
-                pathRewrite: {"^/api" : ""}     //后面是重写的新路径
-            }
-        }
+        contentBase: config.dev.assetsRoot,     //本地服务器所加载的页面所在的目录
+        inline: true
     },
     module: {
         loaders: [
@@ -46,6 +36,11 @@ var config = {
             { 
                 test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, 
                 loader: 'url-loader?limit=100&name='+util.assetsPath('image/[name].[ext]') //!image-webpack?{ progressive:true, optimizationLevel: 7 }
+                // loader: 'url-loader',
+                // options: {
+                //     limit: 10000,
+                //     name: util.assetsPath('image/[name].[hash:7].[ext]')
+                // }
             },
             {
                 test: /\.string$/, 
@@ -108,5 +103,9 @@ for(var page in pages) {
     }
     config.plugins.push(new HtmlWebpackPlugin(conf));
 }
+
+if(env === 'dev'){
+    config.entry.main.push('webpack-dev-server/client?http://localhost:8080/');
+};
 
 module.exports = config;
