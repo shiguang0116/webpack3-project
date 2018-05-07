@@ -1,11 +1,9 @@
 'use strict';
 
+import env from '../../env.js';
 var Hogan       = require('hogan.js');
 
-var env         = process.env.WEBPACK_ENV;
-// var env         = 'dev';
-console.log(env)
-var baseurl     = env == 'dev' ? '/api' : '';
+var baseurl     = env === 'dev' ? '/api' : '';
 
 var util = {
     // 网络请求

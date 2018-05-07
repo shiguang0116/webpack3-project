@@ -2,12 +2,15 @@ var webpack             = require('webpack');
 var path                = require('path');
 var ExtractTextPlugin   = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin   = require('html-webpack-plugin');
+var fs                  = require('fs');
 var util                = require('./webpack.util.js');
 
-// 环境变量配置，dev / online
-var env                 = process.env.WEBPACK_ENV || 'dev';
+var env                 = util.trim(process.env.WEBPACK_ENV)
 
-console.log(process.env.WEBPACK_ENV)
+fs.open('./env.js', 'w', function(err, fd) {
+    var buf = env === 'dev' ? 'export default "dev";' : 'export default "online";';
+    fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
+});
 
 // 配置
 var config = {
@@ -25,7 +28,7 @@ var config = {
         host: 'localhost',
         port: 8080,
         open: true,
-        openPage: '/index/index.html',
+        openPage: '/index',
         proxy: {
             "/api": {
                 target: "http://192.168.31.234",
@@ -57,7 +60,7 @@ var config = {
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/, // 防止将node_modules 中的js 转码
+                exclude: /node_modules/,
                 loader: 'babel'
             },
         ]
