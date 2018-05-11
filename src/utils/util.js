@@ -1,9 +1,9 @@
 'use strict';
 
-import env from '../../env.js';
+import env from 'build/env.js';
 var Hogan       = require('hogan.js');
 
-var baseurl     = env === 'dev' ? '/api' : '';
+var baseurl     = env === 'development' ? '/api' : '';
 
 var util = {
     // 网络请求

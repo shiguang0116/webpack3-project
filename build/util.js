@@ -1,7 +1,7 @@
 'use strict'
-
 var glob    = require('glob')
 var path    = require('path')
+var config  = require('./config.js');
 
 var pageObj = {
     'demo'                  : { type: 'index', title: '组件用例' },
@@ -11,7 +11,7 @@ var pageObj = {
 var util = {}
 
 util.assetsPath = function (_path) {
-  const assetsSubDirectory = 'assets'
+  const assetsSubDirectory = config.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 
