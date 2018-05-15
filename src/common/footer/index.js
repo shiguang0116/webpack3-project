@@ -1,6 +1,6 @@
 'use strict';
 
-require('./index.css');
+require('./index.less');
 var util     = require('utils/util.js');
 
 // 通用页面尾部

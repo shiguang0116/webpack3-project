@@ -1,5 +1,5 @@
 // 'use strict';
-require('./index.css');
+require('./index.less');
 
 var nav         = require('common/nav/index.js');
 var _utils      = require('utils/util.js');

@@ -1,4 +1,4 @@
-require("./index.css");
+require("./index.less");
 
 class Cell {
 	constructor(param) {

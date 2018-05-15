@@ -1,6 +1,6 @@
 'use strict';
-require('./index.css')
-require('../select/index.css')
+require('./index.less')
+require('../select/index.less')
 var util 		= require('utils/util.js');
 var template  	= require('./index.string');
 

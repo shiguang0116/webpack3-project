@@ -1,4 +1,4 @@
-require('./index.css')
+require('./index.less')
 
 // checkbox复选框
 function Checkbox(id){

@@ -1,5 +1,5 @@
 'use strict';
-require('./index.css');
+require('./index.less');
 // require('./prism.css');
 // require('./demos.css');
 // require('./reset.css');

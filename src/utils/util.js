@@ -1,17 +1,32 @@
 'use strict';
-
 import env from 'build/env.js';
-var Hogan       = require('hogan.js');
+import Hogan from 'hogan.js';
 
-var baseurl     = env === 'development' ? '/api' : '';
+const baseurl     = env === 'development' ? '/api' : '';
 
-var util = {
+const util = {
+    getApiUrl : function(param){
+        let apiURL  = param.apiURL || '/api',
+            url     = param.url || '';
+        if (env === 'development') {
+            if (url.indexOf('://') > -1) {
+                let index = url.indexOf('/',url.indexOf('://')+3)
+                url = url.substring(index)
+            }
+        }else{
+            apiURL = ''
+        }
+        return apiURL + url
+    },
     // 网络请求
     ajax : function(param){
         var _this = this;
         $.ajax({
             type        : param.method || 'POST',
-            url         : baseurl + param.url || '',
+            url         : util.getApiUrl({
+                            apiURL: param.apiURL || '',
+                            url: param.url || '',
+                        }),
             data        : param.data || '',
             dataType    : param.type || 'json',
             success     : function(res){

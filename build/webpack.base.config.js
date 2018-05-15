@@ -3,8 +3,13 @@ const webpack             = require('webpack');
 const path                = require('path');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
+const CopyWebpackPlugin   = require('copy-webpack-plugin');
 const util                = require('./util.js');
 const config              = require('./config.js');
+
+function resolve(_path){
+    return path.resolve(__dirname, '../' + _path)
+}
 
 // 配置
 const webpackBaseConfig = {
@@ -14,7 +19,7 @@ const webpackBaseConfig = {
     output: {
         path        : config.assetsRoot,   //存放打包后文件的输出目录 
         filename    : util.assetsPath('js/[name].js'),
-        publicPath  : config.assetsPublicPath,                                  //指定资源文件引用的目录 
+        publicPath  : config.assetsPublicPath, //指定资源文件引用的目录 
     },
     module: {
         rules: [
@@ -59,13 +64,12 @@ const webpackBaseConfig = {
     resolve : {
         extensions: ['.vue', '.js', ',json'],
         alias : {
-            'vue'           : 'vue/dist/vue.js',
-            'build'         : path.resolve(__dirname, '../build'),
-            '@'             : path.resolve(__dirname, '../src'),
-            'common'        : path.resolve(__dirname, '../src/common'),
-            'components'    : path.resolve(__dirname, '../src/components'),
-            'pages'         : path.resolve(__dirname, '../src/pages'),
-            'utils'         : path.resolve(__dirname, '../src/utils')
+            'build'         : resolve('build'),
+            '@'             : resolve('src'),
+            'common'        : resolve('src/common'),
+            'components'    : resolve('src/components'),
+            'pages'         : resolve('src/pages'),
+            'utils'         : resolve('src/utils')
         },
     },
     plugins: [
@@ -76,6 +80,15 @@ const webpackBaseConfig = {
         }),
         // 把css单独打包到文件里
         new ExtractTextPlugin(util.assetsPath('css/[name].css')),
+        // 复制文件
+        new CopyWebpackPlugin([
+            {
+                from: resolve('src/utils/js'),
+                to: util.assetsPath('js/'),
+            }
+        ],{
+            // ignore: ['.*']  //忽略拷贝指定的文件
+        })
     ]
 };
 

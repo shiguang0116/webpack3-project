@@ -1,4 +1,4 @@
-require('./index.css')
+require('./index.less')
 
 // radio
 function Radio(id){

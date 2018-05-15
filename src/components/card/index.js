@@ -1,6 +1,6 @@
 'use strict';
 
-require('./index.css');
+require('./index.less');
 
 
 

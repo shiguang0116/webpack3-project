@@ -1,10 +1,11 @@
-require('./styles/index.less');
-require('../node_modules/font-awesome/css/font-awesome.min.css');
+// css
+import './styles/index.less';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 // common
-require('common/footer/index.js');
-require('common/empty/index.js');
+import 'common/footer/index.js';
+import 'common/empty/index.js';
 
-// 组件
-require('components/card/index.js');
-require('components/cell/index.js');
+// components
+import 'components/card/index.js';
+import 'components/cell/index.js';

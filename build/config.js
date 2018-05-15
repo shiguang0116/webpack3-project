@@ -8,7 +8,7 @@ module.exports = {
     assetsPublicPath: '/',
     // server
     host: 'localhost', 
-    port: 8001, 
+    port: 8000, 
     autoOpenPage: 'index/',
     proxyTable: {
         "/api": {

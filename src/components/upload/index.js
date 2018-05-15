@@ -1,5 +1,5 @@
 'use strict';
-require('./index.css');
+require('./index.less');
 var util = require('utils/util.js');
 
 // 文件上传

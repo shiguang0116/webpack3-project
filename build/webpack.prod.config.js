@@ -34,7 +34,8 @@ const webpackConfig = merge(webpackBaseConfig, {
 const spinner = ora('building for production...')
 spinner.start()
 
-rm(path.resolve(__dirname, '../dist/'), err => {
+// 打包
+rm(path.resolve(__dirname, '../dist/*'), err => {
     if (err) throw err
     webpack(webpackConfig, (err, stats) => {
         spinner.stop()

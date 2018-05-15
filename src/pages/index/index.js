@@ -1,11 +1,11 @@
 'use strict';
-
-require('./index.css');
-var util    = require('utils/util.js');
+import './index.less'
+import util from'utils/util.js'
 
 // 页面
-var page = {
+const page = {
     init : function(){
+        console.log('1')
         this.onLoad();
         this.bindEvent();
     },
@@ -18,7 +18,7 @@ var page = {
         })
     },
     bindEvent : function(){
-        var _this = this;
+        const _this = this;
     },
 };
 

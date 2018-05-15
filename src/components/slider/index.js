@@ -1,6 +1,6 @@
 'use strict';
 
-require('./index.css');
+require('./index.less');
 // 轮播图
 var Carousel = function(id){
 	this.$imgs 		= $("#" + id + " .sg-banner-item")

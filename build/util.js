@@ -1,18 +1,18 @@
 'use strict'
-var glob    = require('glob')
-var path    = require('path')
-var config  = require('./config.js');
+const glob    = require('glob')
+const path    = require('path')
+const config  = require('./config.js');
 
-var pageObj = {
+const pageObj = {
     'demo'                  : { type: 'index', title: '组件用例' },
     'index'                 : { type: 'index', title: '首页' },
 }
 
-var util = {}
+const util = {}
 
 util.assetsPath = function (_path) {
-  const assetsSubDirectory = config.assetsSubDirectory
-  return path.posix.join(assetsSubDirectory, _path)
+    const assetsSubDirectory = config.assetsSubDirectory
+    return path.posix.join(assetsSubDirectory, _path)
 }
 
 util.title = function (name) {
@@ -24,11 +24,11 @@ util.urlType = function(name){
 }
 
 util.getEntries = function (globPath) {
-    var entries = {}
+    let entries = {}
     // 读取src目录,并进行路径裁剪
     glob.sync(globPath).forEach(function (entry) {
-        var tmp = entry.split('/').slice(-3)
-        var moduleName = tmp.slice(1, 2);
+        let tmp = entry.split('/').slice(-3)
+        let moduleName = tmp.slice(1, 2);
         entries[moduleName] = entry
     });
     return entries;

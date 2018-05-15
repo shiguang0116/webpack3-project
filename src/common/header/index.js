@@ -1,6 +1,6 @@
 'use strict';
 
-require('./index.css');
+require('./index.less');
 var util     = require('utils/util.js');
 var _service = require('service/service.js');
 

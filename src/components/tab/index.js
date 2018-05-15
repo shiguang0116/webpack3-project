@@ -1,5 +1,5 @@
 'use strict';
-require('./index.css');
+require('./index.less');
 
 // 选项卡
 var Tab = function(id){
