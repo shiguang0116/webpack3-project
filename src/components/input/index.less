@@ -1,0 +1,76 @@
+// input::-webkit-input-placeholder,
+// textarea::-webkit-input-placeholder{
+//     color: #BBBEC4;
+//     font-size: 14px;
+// }
+// @input-height-base           : 44px;
+
+.sg-input{
+    // background-color: @primary-color;
+}
+
+.sg-input{
+    width: 100%;
+    // height: @input-height-base;
+    // padding-left: @input-padding-horizontal;
+    // padding-right: @input-padding-horizontal;
+    // border-radius: @border-radius-base;
+    // background-color: @input-bg;
+    // border: 1px solid @border-color-base;
+    // transition: all @transition-time @ease-in-out;
+
+    // &:hover{
+    //     border: 1px solid #34B8C2;
+    // }
+}
+.inp:focus{
+    border: 1px solid #34B8C2;
+    box-shadow: 0 0 4px 0 rgba(52,184,194,0.60);
+}
+
+.inp-item{
+    height: 44px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.inp-box{
+    position: relative;
+}
+.inp-box.flt{width: 50%;}
+.inp-box.frt{width: 40%;}
+.inp-err-item{
+    margin-bottom: 0px;
+    position: relative;
+}
+.inp-err-item .inp-err{
+    border: 1px solid #F56A01;
+}
+.inp-err-item .inp-err:hover, .inp-err-item .inp-err:focus{
+    border: 1px solid #F56A01;
+    box-shadow: 0 0 4px 0 rgba(245,106,1,0.60);
+}
+.inp-err-item .err-tip{
+    font-size: 12px;
+    color: #F56A01;
+    line-height: 18px;
+    padding-top: 0px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+.inp-err-item .inp-err-icon{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    right: 12px;
+    top: 12px;
+    // background: url('../images/icon/error.png') no-repeat;
+}
+.inp-item-btn{
+    margin-top: 30px;
+}
+.inp-item .btn-jv{
+    width: 100%;
+    font-size: 16px;
+    letter-spacing: 2px;
+}

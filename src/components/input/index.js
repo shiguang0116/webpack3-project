@@ -1,13 +1,12 @@
 require('./index.less')
 
-// radio
-function Radio(id){
+function Input(id){
 	this.oParent = $('#' + id)
 	this.oItem = this.oParent.find('.sg-radio-item')
 	this.value = this.oParent.find('.sg-radio-checked').attr('data-value')
 	this.init()
 }
-Radio.prototype.init = function(){
+Input.prototype.init = function(){
 	const _this = this
 	this.oItem.click(function(){
 		$(this).addClass('sg-radio-checked').siblings().removeClass('sg-radio-checked')
@@ -15,6 +14,6 @@ Radio.prototype.init = function(){
 	})
 }
 
-module.exports = Radio;
+module.exports = Input;
 
 

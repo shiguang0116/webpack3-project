@@ -1,3 +1,4 @@
+var Input 		= require('components/input/index.js')
 var Radio 		= require('components/radio/index.js')
 var Checkbox 	= require('components/checkbox/index.js')
 
