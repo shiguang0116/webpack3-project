@@ -21,6 +21,9 @@ const webpackBaseConfig = {
         filename    : util.assetsPath('js/[name].js'),
         publicPath  : config.assetsPublicPath, //指定资源文件引用的目录 
     },
+    externals : {
+        'jquery' : 'window.jQuery'  //在编译时，看到require('jquery')，就把它替换成window.jQuery
+    },
     module: {
         rules: [
             { 
@@ -55,8 +58,8 @@ const webpackBaseConfig = {
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                exclude: /node_modules/
             },
         ]
     },

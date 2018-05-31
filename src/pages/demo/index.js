@@ -9,10 +9,11 @@ require('@/example/form/index.js');
 require('@/example/select/index.js');
 require('@/example/cascade/index.js');
 require('@/example/datepicker/index.js');
+require('@/example/jeDate/index.js');
 require('@/example/upload/index.js');
 require('@/example/selectTile/index.js');
 require('@/example/tab/index.js');
-require('@/example/slider/index.js');
+require('@/example/cropper/index.js');
 // 第三方插件
 // var echarts = require('echarts') //全部引入
 var echarts = require('echarts/lib/echarts'); //按需引入

@@ -1,3 +1,13 @@
+@font-color         : #444;
+@text-gray          : #bbbec4;
+@hover-color        : #34B8C2;
+
+@selected-bg-color  : #34B8C2;
+@hover-bg-color     : lighten(@selected-bg-color, 45%);
+@border-color       : #e9eaec;
+@border-radius-base : 4px;
+@border-radius-sm   : 3px;
+
 /* 需修改部分样式 */
 .beatpicker {
     -moz-box-sizing: content-box !important;
@@ -8,18 +18,16 @@
     -moz-box-shadow: 0 3px 2px rgb(238, 238, 238);
     -o-box-shadow: 0 3px 2px rgb(238, 238, 238);
     -webkit-box-shadow: 0 3px 2px rgb(238, 238, 238);
-    background-color: rgb(248, 248, 248);
-    color: rgb(55, 55, 55);
-    font-family: Trebuchet MS;
-    font-size: 13px;
+    /*font-family: Trebuchet MS;*/
+    color: @font-color;
+    width: 216px;
     height: auto;
-    min-width: 200px;
-    padding: 4px;
+    font-size: 12px;
+    margin: 5px 0;
+    border: 1px solid @border-color;
+    border-radius: @border-radius-base;
+    background-color: rgb(248, 248, 248);
     position: absolute;
-    width: 250px;
-    border: 1px solid #e9e9e9;
-    border-radius: 5px;
-    /*border-bottom: 3px solid rgb(207, 207, 207);*/
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -33,26 +41,32 @@
     background: transparent;
     height: auto;
     line-height: 1; 
-    color: white; 
     letter-spacing: 0px; 
 }
 .beatpicker .button {
-    background-color: rgb(57, 148, 197);
     border: medium none;
-    color: rgb(235, 235, 235);
+    color: @text-gray;
     cursor: pointer;
     display: inline-block;
-    font: bold 12px/2 arial,tahoma,sans-serif;
-    margin: 0 2px;
-    padding: 5px;
+    /*font: bold 12px/2 arial,tahoma,sans-serif;*/
     text-align: center;
     text-decoration: none;
 }
-
 .beatpicker .button:hover {
     background-color: rgb(37, 126, 174);
 }
-
+.beatpicker-input{
+    width: 100%;
+    height: 44px;
+    padding-left: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    transition: all 0.2s ease-in-out;
+}
+.beatpicker-input:disabled, .beatpicker-input[disabled]{
+    background-color: red!important;
+}
 .beatpicker-inputnode {
     background-position: right center;
     background-repeat: no-repeat;
@@ -67,23 +81,29 @@
 }
 
 .beatpicker ul.cell-parent {
-    margin: 0 auto;
     width: 100%;
+    padding-left: 10px;
+    margin: 0 auto;
     overflow: hidden;
+}
+.beatpicker ul.days-cell-parent.cell-parent {
+    padding-bottom: 10px;
 }
 
 .beatpicker li.cell {
-    float: left;
-    margin: 1%;
-    padding: 2%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    margin: 2px;
     text-align: center;
-    width: 8%;
+    float: left;
     white-space: nowrap;
     box-sizing: content-box;
-    color: #333;
+    color: @font-color;
 }
 
 .beatpicker .days .cell-parent li.cell {
+    border-radius: @border-radius-sm;
     cursor: pointer;
     transition: background-color 0.09s linear 0s;
 }
@@ -94,42 +114,35 @@
 }
 
 .beatpicker .days .cell-parent li.cell:hover {
-    background-color: rgb(211, 93, 93);
-    color: rgb(255, 255, 255) !important;
-    font-weight: bold;
+    background-color: @hover-bg-color;
 }
 
 .beatpicker .main-nav {
-    background-color: rgb(65, 169, 204);
-    height: 30px;
-    margin: 0 auto;
-    padding: 2px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 auto 10px;
+    border-bottom: 1px solid #e9e9e9;
     position: relative;
 }
 
 .beatpicker .main-nav .button {
     background-color: transparent;
     font-family: inherit;
-    font-size: 14px;
-    height: 30px;
-    line-height: 30px;
-    padding: 2px 0;
-    margin: 0;
+    height: 100%;
     position: absolute;
     top: 0;
-    width: 14%;
 }
 
 .beatpicker .main-nav .button:hover {
-    background-color: rgb(37, 126, 174);
+    color: @hover-color;
 }
 
 .beatpicker .main-nav .button.next {
-    right: 0;
+    right: 16px;
 }
 
 .beatpicker .main-nav .button.prev {
-    left: 0;
+    left: 16px;
 }
 
 .beatpicker .days .cell-parent li.cell.date-disabled.between-range {
@@ -141,7 +154,7 @@
     /*background-color: rgb(194, 194, 194);
     color: rgb(255, 255, 255);*/
     background-color: transparent;
-    color: rgb(198, 198, 198)!important;
+    color: @text-gray!important;
     font-weight: normal;
     cursor: not-allowed;
 }
@@ -151,13 +164,13 @@
 }
 
 .beatpicker .days .cell-parent li.cell.date-disabled, .days .cell-parent li.cell.not-notable.date-disabled {
-    color: rgb(198, 198, 198);
+    color: @text-gray;
 }
 
 .beatpicker .days .cell.notable-today {
-    background-color: rgb(65, 132, 169);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
+    background-color: transparent;
+    color: @selected-bg-color;
+    font-weight: 500;
 }
 
 .beatpicker .days .cell-parent li.cell.not-notable.notable-today:hover {
@@ -171,13 +184,13 @@
 }
 
 .beatpicker .days .cell-parent li.cell.selected-date {
-    background-color: rgb(247, 152, 81);
+    background-color: @selected-bg-color;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .beatpicker .days .cell-parent li.cell.selected-date.notable-today {
-    box-shadow: 0 0 0 2px rgb(208, 132, 81) inset;
+    box-shadow: 0 0 0 2px transparent inset;
 }
 
 .beatpicker .days .cell-parent li.cell.between-range {
@@ -199,7 +212,7 @@
 
 .beatpicker .main-nav .current-indicator {
     background-color: transparent;
-    color: rgb(255, 255, 255);
+    color: #555;
     font-family: arial;
     font-size: 12px;
     left: 14%;
@@ -207,7 +220,7 @@
 }
 
 .beatpicker .main-nav .current-indicator:hover {
-    background-color: rgb(187, 80, 80);
+    
 }
 
 .beatpicker .footer {

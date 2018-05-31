@@ -10,21 +10,19 @@ BeatPicker.prototype = {
     daysSimple: ["日" , "一" , "二" , "三" , "四" , "五" , "六"],
     // daysSimple: ["Su" , "Mo" , "Tu" , "We" , "Th" , "Fr" , "Sa"],
     daysFull: [],
-    monthsSimple: ["一月" , "二月" , "三月" , "四月"  , "五月" , "六月" , "七月" , "八月" , "九月" , "十月" , "十一月" , "十二月"],
-    monthsFull: ["1月" , "2月" , "3月" , "4"  , "5月" , "6月" , "7月" , "8月" , "9月" , "10月" , "11月" , "12月"],
+    monthsSimple: ["1月" , "2月" , "3月" , "4月"  , "5月" , "6月" , "7月" , "8月" , "9月" , "10月" , "11月" , "12月"],
+    monthsFull: ["1月" , "2月" , "3月" , "4月"  , "5月" , "6月" , "7月" , "8月" , "9月" , "10月" , "11月" , "12月"],
     // monthsSimple: ["Jan" , "Feb" , "Mar" , "Apr"  , "May" , "Jun" , "Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"],
     // monthsFull: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     startDate: new Date(),
     currentDate: new Date(),
-    //["DD" , "MM" , "YYYY"]//["MM" , "DD" , "YYYY"]//["DD" , "NM" , "YYYY"]
-    //["YYYY" , "MM" , "DD"]
     dateFormat: {
         separator: "-",
         format: ["YYYY" , "MM" , "DD"]
     },
     modules: {
         header: true,
-        footer: true,
+        footer: false,
         daysOfTheWeek: true,
         navBar: true,
         today: true,
@@ -101,7 +99,7 @@ BeatPicker.prototype = {
         showOn: "click",
         hideOn: "click",
         isInputIsReadonly: true,
-        iconImage: "../../images/picker.jpg"
+        iconImage: "./picker.png"
     },
     labels: {
         // today: "Today",
@@ -117,7 +115,7 @@ BeatPicker.prototype = {
         hide: "hide",
         clear: "clear"
     },
-    disablingRules: [{from:[new Date().getFullYear(),new Date().getMonth()+1,new Date().getDate()-1],to:'<'}],
+    disablingRules: [],
 
     //PRIVATE FIELD DONT TRY TO MANIPULATE THESE IF YOU DONT KNOW WHAT ARE YOU DOING
     _inputParentNode: null,
@@ -1409,17 +1407,38 @@ var _interpretDisableRules = function (elem) {
     var dDates = elem.data("beatpicker-disable");
     if (!dDates) return {};
     var datesMap = [];
-    dDates = dDates.replace(/\s+/g, '');
-    var dDatesArr = dDates.split("}");
-    dDatesArr = dDatesArr.filter(function (item) {
-        return item !== ""
-    });
-    for (var i in dDatesArr) {
-        var item = dDatesArr[i] += "}";
-        if (item.indexOf(",") === 0)
-            item = item.substr(1);
-        datesMap.push(_parseJsonEngine(item, ["from" , "to"]));
+    // disablePrevious
+    if (dDates === 'disablePrevious') {
+        var t = new Date().getTime() - 3600 * 1000 * 24 * 1
+        t = new Date(t)
+        dDates = { from: [t.getFullYear(), t.getMonth()+1, t.getDate()], to: '<' }
     }
+    // disableNext
+    else if (dDates === 'disableNext') {
+        var t = new Date().getTime() + 3600 * 1000 * 24 * 1
+        t = new Date(t)
+        dDates = { from: [t.getFullYear(), t.getMonth()+1, t.getDate()], to: '>' }
+    }
+    // disableOptions
+    else{
+        if (!window[dDates]) return {};
+        dDates = window[dDates]; // 格式：{ from: '2018-05-05', to: '2018-05-29' } 或 { from: '2018-05-05', to: '>' };
+        for (var key in dDates) {
+            var arr = ''
+            if (dDates[key].indexOf('-') > -1) {
+                arr = dDates[key].split('-')
+                for (var i in arr) {
+                    if (arr[i].indexOf('0') == 0) {
+                        arr[i] = arr[i].replace('0', '')
+                    }
+                }
+            }else{
+                arr = dDates[key]
+            }
+            dDates[key] = arr
+        }
+    }
+    datesMap.push(dDates)
     return {disablingRules: datesMap};
 };
 var _interpretPosition = function (elem) {

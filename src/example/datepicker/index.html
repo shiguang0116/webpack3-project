@@ -1,27 +1,28 @@
 <h2>datepicker</h2>
 <div style="width: 300px;">
-	<!-- 相关属性 -->
-	<input class="inp" type="text" data-beatpicker="true" 
-			data-beatpicker-module="footer,clear"/>
-	<!-- 自定义 -->
-	<input class="inp" type="text" data-beatpicker="true" 
+	<h4>选择日期</h4>
+	<input class="inp" type="text" 
+			data-beatpicker="true" 
+			data-beatpicker-module="clear"/>
+	<h4>禁用今天之前</h4>
+	<input class="inp" type="text" 
+			data-beatpicker="true" 
+			data-beatpicker-disable="disablePrevious"
+			data-beatpicker-module="clear"/>
+	<h4>禁用今天之后</h4>
+	<input class="inp" type="text" 
+			data-beatpicker="true" 
+			data-beatpicker-disable="disableNext"
+			data-beatpicker-module="clear"/>
+	<h4>时间段选择</h4>
+	<input class="inp" type="text" 
+			data-beatpicker="true" 
+			data-beatpicker-range="true"
+			data-beatpicker-module="clear"/>
+	<h4>自定义</h4>
+	<input class="inp" type="text" 
+			data-beatpicker="true" 
+			data-beatpicker-disable="disableOptions"
 			data-beatpicker-extra="customOptions" 
-			data-beatpicker-disable="{from:[2018,1,15],to:'<'}"
-			data-beatpicker-module="footer,clear"/>
+			data-beatpicker-module="clear"/>
 </div>
-<script>
-	customOptions = {
-		daysSimple: ["Su" , "Mo" , "Tu" , "We" , "Th" , "Fr" , "Sa"],
-		monthsSimple: ["Jan" , "Feb" , "Mar" , "Apr"  , "May" , "Jun" , "Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"],
-    	monthsFull: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-	    view : {
-	        // alwaysVisible:true
-	    },
-	    labels: {
-	        today: "Today",
-	        gotoDateInput: "Insert your date",
-	        gotoDateButton: "Set",
-	        clearButton: "英文"
-	    }
-	}
-</script>
