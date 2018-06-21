@@ -1,5 +1,5 @@
 {
-  "name": "jquery-pc",
+  "name": "sg-jquery-webpack",
   "version": "1.0.0",
   "description": "jquery-webpack项目搭建",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shiguang0116/jquery-pc.git"
+    "url": "https://github.com/shiguang0116/sg-jquery-webpack.git"
   },
   "author": "shig",
   "license": "ISC",

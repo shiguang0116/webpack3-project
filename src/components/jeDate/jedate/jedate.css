@@ -43,13 +43,13 @@
 .jedate .jedate-pane{width: 230px;float: left;overflow: hidden;}
 .jedate .jedate-header{width:100%;height:36px;line-height: 36px;float: left;background-color: #f2f2f2;text-align: center;font-size: 14px;padding: 0 50px;position: relative;}
 .jedate .jedate-header em{width:25px;height:36px;line-height: 36px;position:absolute;color: #666;top:0;background-repeat: no-repeat;background-position: center center;cursor: pointer;}
-.jedate .jedate-header .ymbtn{padding: 8px;border-radius: 4px;cursor:pointer;font-size: 14px;}
+.jedate .jedate-header .ymbtn{padding: 0px;border-radius: 4px;cursor:pointer;font-size: 14px;}
 /* .jedate .jedate-header em:hover,.jedate .jedate-header .ymbtn:hover{color: #00A680;} */
 .jedate .jedate-content{width:100%;height: 220px;float: left;padding: 5px;overflow: hidden;}
 .jedate .jedate-content.bordge{border-left: 1px #e9e9e9 solid;}
 .jedate .jedate-content .yeartable,.jedate .jedate-content .monthtable{width: 100%;border-collapse: collapse;border-spacing: 0;border: 1px solid #fff;}
 .jedate .jedate-content .yeartable td,.jedate .jedate-content .monthtable td{width:73px;height: 51px;line-height: 51px;text-align:center; position:relative; overflow:hidden;font-size: 14px;}
-.jedate .jedate-content .yeartable td span,.jedate .jedate-content .monthtable td span{padding: 8px 10px;border: 1px solid #fff;}
+.jedate .jedate-content .yeartable td span,.jedate .jedate-content .monthtable td span{padding: 0px 10px;border: 1px solid #fff;}
 .jedate .jedate-content .yeartable td.action span,.jedate .jedate-content .monthtable td.action span,
 .jedate .jedate-content .yeartable td.action span:hover,.jedate .jedate-content .monthtable td.action span:hover{background-color:#00A680;border:1px #00A680 solid;color:#fff;}
 .jedate .jedate-content .yeartable td span:hover,.jedate .jedate-content .monthtable td span:hover{background-color:#f2f2f2;border: 1px #f2f2f2 solid;}
