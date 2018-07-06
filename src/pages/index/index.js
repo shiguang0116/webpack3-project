@@ -1,11 +1,10 @@
 'use strict';
-import './index.less'
-import util from'utils/util.js'
+import './index.less';
+import util from'utils/util.js';
 
 // 页面
 const page = {
     init : function(){
-        console.log('1')
         this.onLoad();
         this.bindEvent();
     },
