@@ -1,6 +1,6 @@
 ﻿# jquery-webpack-project
 
-> 一个jquery-webpack的项目
+> 一个webpack构建的jquery项目
 
 ## 项目初始化步骤
 
@@ -22,5 +22,3 @@
     生产模式: npm run build
 
 ```
-
-github地址：https://github.com/shiguang0116/sg-jquery-webpack.git
