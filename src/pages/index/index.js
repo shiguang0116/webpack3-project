@@ -5,16 +5,13 @@ import util from'utils/util.js';
 // 页面
 const page = {
     init : function(){
-        this.onLoad();
+        this.getList();
         this.bindEvent();
     },
-    onLoad : function(){
-        util.ajax({
-            url: '/passport/checklogin',
-        })
-        util.ajax({
-            url: '/product/getproductlistall',
-        })
+    getList : function(){
+        // util.ajax({
+            // url: '/product/list',
+        // });
     },
     bindEvent : function(){
         const _this = this;

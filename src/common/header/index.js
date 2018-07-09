@@ -1,7 +1,6 @@
 'use strict';
-
-require('./index.less');
-const util     = require('utils/util.js');
+import './index.less';
+import util from'utils/util.js';
 
 // 通用页面头部
 const header = {

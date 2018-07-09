@@ -1,7 +1,7 @@
 'use strict';
-require('./index.less');
-require('./cropper.min.css');
-require('./cropper.min.js');
+import './index.less';
+import './cropper.min.css';
+import './cropper.min.js';
 
 //弹出框水平垂直居中
 (window.onresize = function () {

@@ -1,1 +1,0 @@
-var Input 		= require('components/input/index.js')

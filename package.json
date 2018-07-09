@@ -44,8 +44,6 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
-    "echarts": "^3.8.5",
-    "font-awesome": "^4.7.0",
     "hogan": "^1.0.2"
   }
 }

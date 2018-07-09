@@ -1,1 +1,2 @@
-require('./index.less');
+'use strict';
+import './index.less';

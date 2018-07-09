@@ -1,16 +1,15 @@
 'use strict';
-
-require('./index.less');
-var util     = require('utils/util.js');
+import './index.less';
+import util from'utils/util.js';
 
 // 通用页面尾部
-var footer = {
+const footer = {
     init : function(){
         this.handleFooter();
     },
     handleFooter : function(){
-        var oFoot = document.getElementById('footer')
-        var oBody = document.getElementsByTagName('body')[0]
+        const oFoot = document.getElementById('footer')
+        const oBody = document.getElementsByTagName('body')[0]
         util.handleFooter(oBody,oFoot,64)
     }
 };

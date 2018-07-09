@@ -1,7 +1,6 @@
 'use strict';
-
-require('./index.less');
-var util     = require('utils/util.js');
+import './index.less';
+import util from'utils/util.js';
 
 // 导航
 var nav = {
