@@ -28,23 +28,29 @@ const webpackBaseConfig = {
         rules: [
             { 
                 test: /\.css$/, 
-                loader: ExtractTextPlugin.extract({  
+                use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
-                    use: "css-loader"  
+                    use: ['css-loader','postcss-loader']
                 })
             },
             { 
                 test: /\.less$/, 
-                loader: ExtractTextPlugin.extract({  
+                use: ExtractTextPlugin.extract({  
                     fallback: "style-loader",  
-                    use: "css-loader!less-loader"
+                    use: [
+                        { loader: 'css-loader' },
+                        {
+                            loader: 'postcss-loader',
+                        },
+                        { loader: 'less-loader' },
+                    ]
                 }) 
             },
             { 
                 test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)\??.*$/, 
                 loader: 'url-loader',
                 options: {
-                    limit: 100,
+                    limit: 1024,
                     name: util.assetsPath('image/[name].[ext]')
                 }
             },
