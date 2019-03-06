@@ -14,7 +14,7 @@
 # 全局安装webpack-dev-server
     命令: (sudo) npm install -g webpack-dev-server@2
 
-# 在项目根目录执行npm初始化
+# 初始化安装项目依赖
     命令: npm install
 
 # 启动项目

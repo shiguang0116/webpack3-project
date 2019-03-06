@@ -13,11 +13,21 @@
 	    </div>
 	    <div id="scroll"></div>
 	</footer>
-	
-	<!-- 引入外部文件 -->
-	<script>
-		document.write('<script src="/assets/js/jquery-1.10.2.min.js?'+new Date().getTime()+'"></scr'+'ipt>');
-	</script>
-	<script src="/assets/js/placeholder.js"></script>
+
+	<script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <!-- 兼容ie8模板数据渲染 -->
+    <!--[if lte IE 8]>
+        <script src="/assets/js/es5-shim.min.js"></script>
+        <script src="/assets/js/es5-sham.min.js"></script>
+        <script src="/assets/js/json3.min.js"></script>
+    <![endif]-->
+    <script src="/assets/js/template.min.js"></script>
+    <script src="/assets/js/polyfill.min.js"></script>
+
+	<!-- 解决ie9没有placeholder的问题 -->
+	<!--[if lte IE 9]>
+		<script src="/assets/js/placeholder.js"></script>
+    <![endif]-->
 </body>
 </html>

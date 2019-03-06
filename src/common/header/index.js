@@ -1,6 +1,5 @@
 'use strict';
 import './index.less';
-import util from'utils/util.js';
 
 // 通用页面头部
 const header = {

@@ -1,4 +1,10 @@
-'use strict'
+/**
+ * @description: 
+ * @author: guang.shi <https://blog.csdn.net/guang_s> 
+ * @date: 2018-01-09 11:37:29 
+ */
+'use strict';
+
 const webpack             = require('webpack');
 const path                = require('path');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
@@ -8,21 +14,18 @@ const util                = require('./util.js');
 const config              = require('./config.js');
 
 function resolve(_path){
-    return path.resolve(__dirname, '../' + _path)
+    return path.resolve(__dirname, '../' + _path);
 }
 
 // 配置
 const webpackBaseConfig = {
     entry: Object.assign(util.getEntries('./src/pages/**/*.js'),
-        {'app' : ['@/main.js']}
+        { 'main' : '@/main.js' }
     ),
     output: {
-        path        : config.assetsRoot,   //存放打包后文件的输出目录 
-        filename    : util.assetsPath('js/[name].js'),
-        publicPath  : config.assetsPublicPath, //指定资源文件引用的目录 
-    },
-    externals : {
-        'jquery' : 'window.jQuery'  //在编译时，看到require('jquery')，就把它替换成window.jQuery
+        path        : config.assetsRoot,                // 打包后文件的输出目录 
+        filename    : util.assetsPath('js/[name].[chunkhash].js'),  // 打包后的文件路径
+        publicPath  : config.assetsPublicPath,          // 指定资源文件引用的目录 
     },
     module: {
         rules: [
@@ -39,84 +42,91 @@ const webpackBaseConfig = {
                     fallback: "style-loader",  
                     use: [
                         { loader: 'css-loader' },
-                        {
-                            loader: 'postcss-loader',
-                        },
+                        { loader: 'postcss-loader' },
                         { loader: 'less-loader' },
                     ]
                 }) 
             },
-            { 
-                test: /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)\??.*$/, 
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 1024,
-                    name: util.assetsPath('image/[name].[ext]')
+                  limit: 10000,
+                  name: util.assetsPath('images/[name].[hash:7].[ext]')
                 }
             },
             {
-                test: /\.string$/, 
-                loader: 'html-loader',
-                query : {
-                    minimize : true,
-                    removeAttributeQuotes : false
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: util.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
             {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: util.assetsPath('fonts/[name].[hash:7].[ext]')
+                }
             },
+            // {
+            //     test: /\.js$/,
+            //     loader: 'babel-loader',
+            //     exclude: /node_modules/
+            // },
         ]
+    },
+    externals : {
+        'jquery' : 'window.jQuery'  // 在编译时，会把 require('jquery') 替换成 window.jQuery
     },
     // 配置路径
     resolve : {
-        extensions: ['.vue', '.js', ',json'],
+        extensions: ['.js', '.json'],
         alias : {
-            'build'         : resolve('build'),
-            '@'             : resolve('src'),
-            'common'        : resolve('src/common'),
-            'components'    : resolve('src/components'),
-            'pages'         : resolve('src/pages'),
-            'utils'         : resolve('src/utils')
+            'build' : resolve('build'),
+            '@'     : resolve('src'),
         },
     },
     plugins: [
-        // 独立通用模块
+        // 把通用模块打包到 main.js 里面
         new webpack.optimize.CommonsChunkPlugin({
-            name : 'app',
+            name : 'main',
             minChunks: 3,
         }),
-        // 把css单独打包到文件里
-        new ExtractTextPlugin(util.assetsPath('css/[name].css')),
+        // 把 css 单独打包到文件里
+        new ExtractTextPlugin(util.assetsPath('css/[name].[contenthash].css')),
         // 复制文件
         new CopyWebpackPlugin([
             {
-                from: resolve('src/utils/js'),
-                to: util.assetsPath('js/'),
+                from: resolve('src/libs/**/*.js'),
+                to: util.assetsPath('js/[name].[ext]'),
+                toType: 'template',
+            },
+            {
+                from: resolve('src/libs/**/*.css'),
+                to: util.assetsPath('css/[name].[ext]'),
+                toType: 'template',
             }
-        ],{
-            // ignore: ['.*']  //忽略拷贝指定的文件
-        })
+        ])
     ]
 };
 
 // 配置html文件
-const pages = util.getEntries('./src/pages/**/*.html')
-for(let page in pages) {
-    let urlType = util.urlType(page)
-    let title = util.title(page)
-    let baseTitle = ' - 及时油'
+const pageObj = util.getEntries('./src/pages/**/*.html');
+for(let page in pageObj) {
+    let title = util.title(page);
+    let baseTitle = ' - webpack项目';
     let conf = {
-        template    : pages[page], 
-        filename    : urlType + '/' + page + '.html',
-        title       : title + baseTitle,
-        favicon     : './favicon.ico',
-        inject      : true,
-        hash        : true,
-        chunks      : ['app', page],
-        chunksSortNode: 'dependency'
-    }
+        template    : pageObj[page],    // 模板的路径
+        filename    : page + '.html',   // 打包后的文件路径
+        title       : title + baseTitle,// 生成的HTML文件的标题
+        favicon     : './favicon.ico',  // 图标路径
+        inject      : true,     // js文件将被放置在body元素的底部
+        chunks      : ['main', page],   // 只引入 main 和该页面对应的 js/css 文件
+        chunksSortMode: 'manual'    // 控制 chunk 的排序。none | auto（默认）| dependency（依赖）| manual（手动）| {function}
+    };
     webpackBaseConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
 

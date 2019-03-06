@@ -1,9 +1,8 @@
 'use strict';
 import './index.less';
-import util from'utils/util.js';
 
 // 导航
-var nav = {
+const nav = {
     init : function(){
         this.onLoad();
         this.bindEvent();
@@ -12,7 +11,7 @@ var nav = {
         
     },
     bindEvent : function(){
-        var _this = this;
+        const self = this;
     }
 };
 

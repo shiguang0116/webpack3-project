@@ -1,4 +1,10 @@
-'use strict'
+/**
+ * @description: 
+ * @author: guang.shi <https://blog.csdn.net/guang_s> 
+ * @date: 2018-01-09 11:37:39 
+ */
+'use strict';
+
 const webpack           = require('webpack');
 const path              = require('path');
 const fs                = require('fs');
@@ -6,9 +12,12 @@ const merge             = require('webpack-merge');
 const config            = require('./config.js');
 const webpackBaseConfig = require('./webpack.base.config.js');
 
-fs.open('./build/env.js', 'w', function(err, fd) {
-    const buf = 'export default "development";';
-    fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
+// fs.open('./build/env.js', 'w', function(err, fd) {
+//     const buf = 'export default "development";';
+//     fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
+// });
+fs.writeFile('build/env.js', 'export default "dev";', function(err){
+    err && console.error(err);
 });
 
 const webpackConfig = merge(webpackBaseConfig, {
@@ -26,4 +35,4 @@ const webpackConfig = merge(webpackBaseConfig, {
     ]
 });
 
-module.exports = webpackConfig
+module.exports = webpackConfig;
