@@ -24,7 +24,7 @@ const webpackBaseConfig = {
     ),
     output: {
         path        : config.assetsRoot,                // 打包后文件的输出目录 
-        filename    : util.assetsPath('js/[name].[chunkhash].js'),  // 打包后的文件路径
+        filename    : 'js/[name].[chunkhash:7].js',  // 打包后的文件路径
         publicPath  : config.assetsPublicPath,          // 指定资源文件引用的目录 
     },
     module: {
@@ -52,7 +52,7 @@ const webpackBaseConfig = {
                 loader: 'url-loader',
                 options: {
                   limit: 10000,
-                  name: util.assetsPath('images/[name].[hash:7].[ext]')
+                  name: 'images/[name].[hash:7].[ext]'
                 }
             },
             {
@@ -60,7 +60,7 @@ const webpackBaseConfig = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: util.assetsPath('media/[name].[hash:7].[ext]')
+                    name: 'media/[name].[hash:7].[ext]'
                 }
             },
             {
@@ -68,7 +68,7 @@ const webpackBaseConfig = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: util.assetsPath('fonts/[name].[hash:7].[ext]')
+                    name: 'fonts/[name].[hash:7].[ext]'
                 }
             },
             // {
@@ -96,17 +96,17 @@ const webpackBaseConfig = {
             minChunks: 3,
         }),
         // 把 css 单独打包到文件里
-        new ExtractTextPlugin(util.assetsPath('css/[name].[contenthash].css')),
+        new ExtractTextPlugin('css/[name].[contenthash:7].css'),
         // 复制文件
         new CopyWebpackPlugin([
             {
                 from: resolve('src/libs/**/*.js'),
-                to: util.assetsPath('js/[name].[ext]'),
+                to: 'js/[name].[ext]',
                 toType: 'template',
             },
             {
                 from: resolve('src/libs/**/*.css'),
-                to: util.assetsPath('css/[name].[ext]'),
+                to: 'css/[name].[ext]',
                 toType: 'template',
             }
         ])
@@ -124,6 +124,7 @@ for(let page in pageObj) {
         title       : title + baseTitle,// 生成的HTML文件的标题
         favicon     : './favicon.ico',  // 图标路径
         inject      : true,     // js文件将被放置在body元素的底部
+        // minify      : true,     // 压缩
         chunks      : ['main', page],   // 只引入 main 和该页面对应的 js/css 文件
         chunksSortMode: 'manual'    // 控制 chunk 的排序。none | auto（默认）| dependency（依赖）| manual（手动）| {function}
     };

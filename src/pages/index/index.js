@@ -11,10 +11,10 @@ const page = {
         
     },
     bindEvent : function(){
-        const _this = this;
+        
     },
 };
 
 $(function(){
     page.init();
-})
+});

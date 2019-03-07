@@ -7,14 +7,10 @@
 
 const glob    = require('glob');
 const path    = require('path');
+const colors    = require('colors');
 const config  = require('./config.js');
 
 const util = {};
-
-util.assetsPath = function (_path) {
-    const assetsSubName = config.assetsSubName || '';
-    return path.posix.join(assetsSubName, _path);
-};
 
 util.title = function (name) {
     const pageObj = config.pagesObj[name];
@@ -24,9 +20,16 @@ util.title = function (name) {
 // 获取入口文件
 util.getEntries = function (globPath) {
     let entries = {};
+    // for(const entry of glob.sync(globPath)) {
     glob.sync(globPath).forEach(function (entry) {
-        let tmp = entry.split('/').slice(-2);
-        let moduleName = tmp.slice(0, 1);
+        let list = entry.split('/');
+        var fileName = list[list.length - 1];
+        let moduleName = fileName.slice(0, fileName.indexOf('.'));
+        // 文件名不能重复的验证（moduleName 在这里取的是文件名。建议把所有上级目录的文件夹名称（不包括src/pages）拼接而成的名字作为最终文件名）
+        if(entries[moduleName]){
+            console.error(colors.red(`文件名不能重复使用：${moduleName}。\n`));
+            process.exit(1);
+        }
         entries[moduleName] = entry;
     });
     return entries;

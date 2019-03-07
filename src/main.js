@@ -4,7 +4,7 @@
  * @date: 2018-01-09 13:39:34 
  */
 
-import './styles/index.less';
+import './main.less';
 
 import '@/utils/util.js';
 import '@/common/header/index.js';

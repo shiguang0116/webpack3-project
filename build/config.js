@@ -10,7 +10,6 @@ const path = require('path');
 module.exports = {
 	// path
     assetsRoot: path.resolve(__dirname, '../dist'), // 打包后文件的输出目录 
-    assetsSubName: 'assets',    // 打包后文件的输出目录的子目录名
     assetsPublicPath: '/',      // 指定资源文件引用的目录 
     // server
     host: 'localhost', 
@@ -25,6 +24,7 @@ module.exports = {
     // 配置页面标题
     pagesObj : {
         'index' : { title: '首页' },
-        'shop' : { title: '商店' },
+        'shopIndex' : { title: '商店' },
+        'shopDetail' : { title: '商店详情' },
     }
 };
