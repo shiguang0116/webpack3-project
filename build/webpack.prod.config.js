@@ -1,5 +1,5 @@
 /**
- * @description: 
+ * @description: 生产环境配置文件
  * @author: guang.shi <https://blog.csdn.net/guang_s> 
  * @date: 2018-01-09 14:45:24 
  */

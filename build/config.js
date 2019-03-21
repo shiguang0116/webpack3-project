@@ -1,5 +1,5 @@
 /**
- * @description: 
+ * @description: 参数配置
  * @author: guang.shi <https://blog.csdn.net/guang_s>
  * @date: 2018-01-09 11:32:56 
  */
@@ -11,6 +11,7 @@ module.exports = {
 	// path
     assetsRoot: path.resolve(__dirname, '../dist'), // 打包后文件的输出目录 
     assetsPublicPath: '/',      // 指定资源文件引用的目录 
+    // assetsPublicPath: '/',      // 指定资源文件引用的目录 (上线目录 或 config配置)
     // server
     host: 'localhost', 
     port: 8000, 

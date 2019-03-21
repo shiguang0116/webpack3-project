@@ -1,0 +1,8 @@
+<% 
+    let page = htmlWebpackPlugin.options.pageData;
+    let pageURL = page.url.split('src/')[1]
+%>
+
+<%= ejsRender(require('html-loader!@/common/header/index.html'), { page: page }) %>
+<%= ejsRender(require('html-loader!./' + pageURL), { page: page }) %>
+<%= ejsRender(require('html-loader!@/common/footer/index.html'), { page: page }) %>

@@ -1,11 +1,15 @@
-${ require('html-loader!@/common/header/head-common.html') }
-${ htmlWebpackPlugin.options.title }
-${ require('html-loader!@/common/header/index.html') }
-
 <div class="w">
-	<h1>index</h1>
-	<img src="${require('../../images/logo.png')}" alt="logo">
-	<a href="./shopIndex.html">to shop.html</a>
+	<h1><%= page.title %></h1>
+	<div>
+		<h3>页面跳转</h3>
+		<a href="./shopIndex.html">to shop.html</a>
+	</div>
+	<div>
+		<h3>引入图片</h3>
+		<img src="../../images/logo.png" width="100" alt="logo">
+	</div>
+	<!-- 引入组件 -->
+	<div style="width: 300px;">
+		<h3>引入组件</h3>
+	</div>
 </div>
-
-${ require('html-loader!@/common/footer/index.html') }

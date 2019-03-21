@@ -1,5 +1,5 @@
 /**
- * @description: 
+ * @description: 开发环境配置文件
  * @author: guang.shi <https://blog.csdn.net/guang_s> 
  * @date: 2018-01-09 11:37:39 
  */
@@ -12,10 +12,6 @@ const merge             = require('webpack-merge');
 const config            = require('./config.js');
 const webpackBaseConfig = require('./webpack.base.config.js');
 
-// fs.open('./build/env.js', 'w', function(err, fd) {
-//     const buf = 'export default "development";';
-//     fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
-// });
 fs.writeFile('build/env.js', 'export default "dev";', function(err){
     err && console.error(err);
 });

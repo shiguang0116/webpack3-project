@@ -9,6 +9,6 @@ import './main.less';
 import '@/utils/util.js';
 import '@/common/header/index.js';
 import '@/common/footer/index.js';
-import '@/common/empty/index.js';
 
-// components
+// components 全局引用（如果需要单独引用的，在对应页面js文件里引入即可）
+import '@/components/empty/empty.js';

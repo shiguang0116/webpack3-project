@@ -1,5 +1,5 @@
 /**
- * @description: 
+ * @description: webpack基础配置文件
  * @author: guang.shi <https://blog.csdn.net/guang_s> 
  * @date: 2018-01-09 11:37:29 
  */
@@ -10,6 +10,7 @@ const path                = require('path');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const CopyWebpackPlugin   = require('copy-webpack-plugin');
+const ejs                 = require('ejs');
 const util                = require('./util.js');
 const config              = require('./config.js');
 
@@ -23,9 +24,9 @@ const webpackBaseConfig = {
         { 'main' : '@/main.js' }
     ),
     output: {
-        path        : config.assetsRoot,                // 打包后文件的输出目录 
-        filename    : 'js/[name].[chunkhash:7].js',  // 打包后的文件路径
-        publicPath  : config.assetsPublicPath,          // 指定资源文件引用的目录 
+        path        : config.assetsRoot,            // 打包后文件的输出目录 
+        filename    : 'js/[name].[chunkhash:7].js', // 打包后的文件路径
+        publicPath  : config.assetsPublicPath,      // 指定资源文件引用的目录 
     },
     module: {
         rules: [
@@ -42,7 +43,20 @@ const webpackBaseConfig = {
                     fallback: "style-loader",  
                     use: [
                         { loader: 'css-loader' },
-                        { loader: 'postcss-loader' },
+                        { 
+                            loader: 'postcss-loader',
+                            options: {
+                                // plugins: function() {
+                                //     return [
+                                //         //一定要写在require("autoprefixer")前面，否则require("autoprefixer")无效
+                                //         require('postcss-import')(),
+                                //         require("autoprefixer")({
+                                //             "browsers": ["Android >= 4.1", "iOS >= 7.0", "ie >= 8"]
+                                //         })
+                                //     ];
+                                // }
+                            } 
+                        },
                         { loader: 'less-loader' },
                     ]
                 }) 
@@ -51,16 +65,8 @@ const webpackBaseConfig = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                  limit: 10000,
-                  name: 'images/[name].[hash:7].[ext]'
-                }
-            },
-            {
-                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
                     limit: 10000,
-                    name: 'media/[name].[hash:7].[ext]'
+                    name: 'images/[name].[hash:7].[ext]'
                 }
             },
             {
@@ -71,6 +77,25 @@ const webpackBaseConfig = {
                     name: 'fonts/[name].[hash:7].[ext]'
                 }
             },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'media/[name].[hash:7].[ext]'
+                }
+            },
+            // {
+            //     test: /\.html$/,
+            //     exclude: /node_modules/,
+            //     use: [{
+            //         loader: 'html-loader',
+            //         options: {
+            //             // minimize: true,
+            //             // interpolate: 'require'
+            //         }
+            //     }]
+            // },
             // {
             //     test: /\.js$/,
             //     loader: 'babel-loader',
@@ -78,6 +103,11 @@ const webpackBaseConfig = {
             // },
         ]
     },
+    // htmlLoader: {
+    //     ignoreCustomFragments: [/\{\{.*?}}/],
+    //     root: path.resolve(__dirname, 'dist'),
+    //     attrs: ['img:src', 'link:href', 'script:src']
+    // },
     externals : {
         'jquery' : 'window.jQuery'  // 在编译时，会把 require('jquery') 替换成 window.jQuery
     },
@@ -86,6 +116,7 @@ const webpackBaseConfig = {
         extensions: ['.js', '.json'],
         alias : {
             'build' : resolve('build'),
+            'dist'  : resolve('dist'),
             '@'     : resolve('src'),
         },
     },
@@ -119,9 +150,13 @@ for(let page in pageObj) {
     let title = util.title(page);
     let baseTitle = ' - webpack项目';
     let conf = {
-        template    : pageObj[page],    // 模板的路径
+        pageData  : {
+            title: title,
+            url: pageObj[page],
+            view_mode: 'add'
+        },
+        template    : './src/main.html',    // 模板路径
         filename    : page + '.html',   // 打包后的文件路径
-        title       : title + baseTitle,// 生成的HTML文件的标题
         favicon     : './favicon.ico',  // 图标路径
         inject      : true,     // js文件将被放置在body元素的底部
         // minify      : true,     // 压缩
@@ -130,5 +165,25 @@ for(let page in pageObj) {
     };
     webpackBaseConfig.plugins.push(new HtmlWebpackPlugin(conf));
 }
+
+// 处理ejs语法
+global.ejsRender = ejs.render;
+
+// // 自定义插件，处理ejs语法
+// function MyPlugin(options) {
+//     this.options = options || {};
+// }
+// MyPlugin.prototype.apply = function(compiler) {
+//     compiler.plugin('compilation', function(compilation, options) {
+//         // 在html加工前，对里面的ejs语法进行处理
+//         compilation.plugin('html-webpack-plugin-before-html-processing', function(htmlPluginData, callback) {
+//             htmlPluginData.html = ejs.render(htmlPluginData.html, {
+//                 page: htmlPluginData.plugin.options.pageData || {}
+//             });
+//             callback( null, htmlPluginData );
+//         } );
+//     });
+// };
+// webpackBaseConfig.plugins.push(new MyPlugin());
 
 module.exports = webpackBaseConfig;
