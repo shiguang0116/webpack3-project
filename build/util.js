@@ -7,7 +7,7 @@
 
 const glob    = require('glob');
 const path    = require('path');
-const colors    = require('colors');
+const colors  = require('colors');
 const config  = require('./config.js');
 
 const util = {};

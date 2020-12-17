@@ -148,12 +148,10 @@ const webpackBaseConfig = {
 const pageObj = util.getEntries('./src/pages/**/*.html');
 for(let page in pageObj) {
     let title = util.title(page);
-    let baseTitle = ' - webpack项目';
     let conf = {
         pageData  : {
             title: title,
-            url: pageObj[page],
-            view_mode: 'add'
+            url: pageObj[page]
         },
         template    : './src/main.html',    // 模板路径
         filename    : page + '.html',   // 打包后的文件路径
